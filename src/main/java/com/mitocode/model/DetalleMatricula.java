@@ -21,7 +21,7 @@ public class DetalleMatricula {
 
     @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String aula;
     @JoinColumn(name = "id_curso", nullable = false)
