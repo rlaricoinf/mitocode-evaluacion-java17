@@ -2,15 +2,16 @@ package com.mitocode.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString
 public class CursoDTO {
+    @EqualsAndHashCode.Include
     private Integer id;
     @NotNull
     @NotEmpty

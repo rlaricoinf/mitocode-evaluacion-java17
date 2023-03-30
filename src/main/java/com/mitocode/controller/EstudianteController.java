@@ -69,6 +69,17 @@ public class EstudianteController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    ///////////////// examen MitoCode ////////////////////////////
+    @GetMapping("/ordenados/edad/mayormenor")
+    public ResponseEntity<List<EstudianteDTO>> readAllStudentsSortByAge()throws Exception{
+        List<EstudianteDTO> lst = service.readAll().stream()
+                .sorted( (x1,x2)-> x2.getEdad() - x1.getEdad() ) // Ordenamiento por edad de mayor a menor
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(lst, HttpStatus.OK);
+    }
+    ///////////////// examen MitoCode ////////////////////////////
+
 
     private EstudianteDTO convertToDto(Estudiante obj) {
         return mapper.map(obj, EstudianteDTO.class);
