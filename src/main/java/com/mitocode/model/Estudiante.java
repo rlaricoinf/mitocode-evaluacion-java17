@@ -5,10 +5,7 @@
  */
 package com.mitocode.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 /**
@@ -25,6 +22,8 @@ public class Estudiante {
     @EqualsAndHashCode.Include
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name="SQ_ESTUDIANTE_MITOCODE", sequenceName="SQ_ESTUDIANTE_MITOCODE",initialValue=1,allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_ESTUDIANTE_MITOCODE")
     private Integer id;
     private String nombres;
     private String apellidos;

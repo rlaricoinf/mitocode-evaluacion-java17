@@ -1,9 +1,9 @@
 package com.mitocode.controller;
 
-import com.mitocode.dto.EstudianteDTO;
+import com.mitocode.dto.CursoDTO;
 import com.mitocode.exception.NewModelNotFoundException;
-import com.mitocode.model.Estudiante;
-import com.mitocode.service.IEstudianteService;
+import com.mitocode.model.Curso;
+import com.mitocode.service.ICursoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -16,24 +16,24 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/estudiantes")
+@RequestMapping("/cursos")
 @RequiredArgsConstructor
-public class EstudianteController {
+public class CursoController {
 
-    private final IEstudianteService service;
+    private final ICursoService service;
 
-    @Qualifier("estudianteMapper")
+    @Qualifier("cursoMapper")
     private final ModelMapper mapper;
 
     @GetMapping
-    public ResponseEntity<List<EstudianteDTO>> readAll()throws Exception{
-        List<EstudianteDTO> lst = service.readAll().stream().map(this::convertToDto).collect(Collectors.toList());
+    public ResponseEntity<List<CursoDTO>> readAll()throws Exception{
+        List<CursoDTO> lst = service.readAll().stream().map(this::convertToDto).collect(Collectors.toList());
         return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EstudianteDTO> readById(@PathVariable("id") Integer id) throws Exception{
-        Estudiante obj = service.readById(id);
+    public ResponseEntity<CursoDTO> readById(@PathVariable("id") Integer id) throws Exception{
+        Curso obj = service.readById(id);
         if(obj==null){
             throw new NewModelNotFoundException("ID NOT FOUND: " + id);
         }
@@ -41,26 +41,26 @@ public class EstudianteController {
     }
 
     @PostMapping
-    public ResponseEntity<EstudianteDTO> create(@Valid @RequestBody EstudianteDTO dto) throws Exception{
-        Estudiante obj = service.save(convertToEntity(dto));
+    public ResponseEntity<CursoDTO> create(@Valid @RequestBody CursoDTO dto) throws Exception{
+        Curso obj = service.save(convertToEntity(dto));
         return new ResponseEntity<>(convertToDto(obj), HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<EstudianteDTO> update(@Valid @RequestBody EstudianteDTO dto) throws Exception{
-        Estudiante obj = service.readById(dto.getId());
+    public ResponseEntity<CursoDTO> update(@Valid @RequestBody CursoDTO dto) throws Exception{
+        Curso obj = service.readById(dto.getId());
 
         if(obj == null){
             throw new NewModelNotFoundException("ID NOT FOUND: " + dto.getId());
         }
 
-        Estudiante cat = service.update(convertToEntity(dto));
+        Curso cat = service.update(convertToEntity(dto));
         return new ResponseEntity<>(convertToDto(cat), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Integer id) throws Exception{
-        Estudiante obj = service.readById(id);
+        Curso obj = service.readById(id);
 
         if(obj == null){
             throw new NewModelNotFoundException("ID NOT FOUND: " + id);
@@ -70,12 +70,12 @@ public class EstudianteController {
     }
 
 
-    private EstudianteDTO convertToDto(Estudiante obj) {
-        return mapper.map(obj, EstudianteDTO.class);
+    private CursoDTO convertToDto(Curso obj) {
+        return mapper.map(obj, CursoDTO.class);
     }
 
-    private Estudiante convertToEntity(EstudianteDTO dto){
-        return mapper.map(dto, Estudiante.class);
+    private Curso convertToEntity(CursoDTO dto){
+        return mapper.map(dto, Curso.class);
     }
 
 
