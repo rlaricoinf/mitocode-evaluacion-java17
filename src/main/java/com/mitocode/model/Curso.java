@@ -21,9 +21,9 @@ public class Curso {
 
     @EqualsAndHashCode.Include
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="SQ_CURSO_MITOCODE", sequenceName="SQ_CURSO_MITOCODE",initialValue=1,allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_CURSO_MITOCODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@SequenceGenerator(name="SQ_CURSO_MITOCODE", sequenceName="SQ_CURSO_MITOCODE",initialValue=1,allocationSize=1)
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_CURSO_MITOCODE")
     private Integer id;
     private String nombre;
     private String siglas;

@@ -21,9 +21,9 @@ public class DetalleMatricula {
 
     @EqualsAndHashCode.Include
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="SQ_DET_MATRICULA_MITOCODE", sequenceName="SQ_DET_MATRICULA_MITOCODE",initialValue=1,allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_DET_MATRICULA_MITOCODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@SequenceGenerator(name="SQ_DET_MATRICULA_MITOCODE", sequenceName="SQ_DET_MATRICULA_MITOCODE",initialValue=1,allocationSize=1)
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_DET_MATRICULA_MITOCODE")
     private Integer id;
     private String aula;
     @JoinColumn(name = "id_curso", nullable = false)

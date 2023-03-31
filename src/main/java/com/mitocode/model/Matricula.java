@@ -24,9 +24,9 @@ public class Matricula {
 
     @EqualsAndHashCode.Include
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="SQ_MATRICULA_MITOCODE", sequenceName="SQ_MATRICULA_MITOCODE",initialValue=1,allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_MATRICULA_MITOCODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@SequenceGenerator(name="SQ_MATRICULA_MITOCODE", sequenceName="SQ_MATRICULA_MITOCODE",initialValue=1,allocationSize=1)
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_MATRICULA_MITOCODE")
     private Integer id;
     private LocalDateTime fechaMatricula;
     private boolean estado;

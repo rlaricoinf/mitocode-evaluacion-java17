@@ -21,9 +21,9 @@ public class Estudiante {
 
     @EqualsAndHashCode.Include
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(name="SQ_ESTUDIANTE_MITOCODE", sequenceName="SQ_ESTUDIANTE_MITOCODE",initialValue=1,allocationSize=1)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_ESTUDIANTE_MITOCODE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@SequenceGenerator(name="SQ_ESTUDIANTE_MITOCODE", sequenceName="SQ_ESTUDIANTE_MITOCODE",initialValue=1,allocationSize=1)
+    //@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SQ_ESTUDIANTE_MITOCODE")
     private Integer id;
     private String nombres;
     private String apellidos;
